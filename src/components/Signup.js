@@ -27,7 +27,7 @@ const Signup = (props) => {
     console.log(json);
     if (json.success) {
       //save auth-token and redirect
-      localStorage.setItem("token", json.authtoken);
+      localStorage.setItem("token", json.authToken);
       navigate("/");
       props.showAlert("Account Created Successfully", "success");
     } else {
@@ -40,6 +40,7 @@ const Signup = (props) => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+      <h2 className="my-3">SignUp to use cloudNotebook</h2>
         <div className="mb-3">
           <label htmlFor="name" className="form-label">
             Username

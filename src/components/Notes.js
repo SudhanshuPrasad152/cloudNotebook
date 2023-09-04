@@ -16,10 +16,9 @@ function Notes(props) {
     etag: "",
   });
   useEffect(() => {
-    if(localStorage.getItem('token')){
+    if (localStorage.getItem("token")) {
       getNotes();
-    }
-    else{
+    } else {
       navigate("/login");
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -143,11 +142,18 @@ function Notes(props) {
       </div>
       <div className="my-3 row">
         <h2>Your Notes</h2>
-        {notes.map((note) => {
-          return (
-            <NoteItem key={note._id} showAlert={props.showAlert} updateNote={updateNote} note={note} />
-          );
-        })}
+        {notes.length === 0
+          ? <div className="container" style={{marginLeft: '3px'}}>No notes to display.</div>
+          : notes.map((note) => {
+              return (
+                <NoteItem
+                  key={note._id}
+                  showAlert={props.showAlert}
+                  updateNote={updateNote}
+                  note={note}
+                />
+              );
+            })}
       </div>
     </div>
   );
